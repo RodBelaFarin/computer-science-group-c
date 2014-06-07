@@ -80,11 +80,8 @@ PROGRAM_START
 
 	// DISPLAY TIME AND WAIT FOR EVENT
 	case display_time:
-	    //save actual_time
-		#if DEBUG_MODE
-			BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
-		#endif
-		 //if (sound_is_on) play_sound;
+
+		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		#if DEBUG_MODE
 			LCD_TEXT("DEBUG")
 		#else
@@ -102,10 +99,7 @@ PROGRAM_START
 
     // DISPLAY DEVICE1 TIMER AND WAIT FOR EVENT
 	case display_dev1:
-		#if DEBUG_MODE
-			BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
-		#endif
-		 //if (sound_is_on) play_sound;
+		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("1 0010")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_dev1;
@@ -319,10 +313,7 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER { c = display_set_timer1_on_off; } //function set_timer2_on_off_settings
 		break;
 	case display_timer1_off:
-		#if DEBUG_MODE
-			BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
-		#endif
-		//if (sound_is_off) play_sound;
+		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("OFF")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer1_off;
@@ -375,10 +366,7 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER { c = display_set_timer2_on_off; } //function set_timer2_on_off_settings
 		break;
 	case display_timer2_off:
-		#if DEBUG_MODE
-			BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
-		#endif
-		//if (sound_is_off) play_sound;
+		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("OFF")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer2_off;
