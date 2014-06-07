@@ -16,7 +16,8 @@ void set_volume(int a, int *volume) {
   *volume = *volume + a;
   if (*volume >= 100) *volume = 100;
   else if (*volume <= 0) *volume = 0;
-  BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+  BEEP_VOLUME(*volume)
+  BEEP(1046.5, 0.1) //beep with frequency 1046.5 --> tone c''' for 0.25sec
   LCD_D_NUMBER(*volume,3,0)	
   int j = 0;
   while ( (!(PINE & (1 << 2)) & (*volume > 0)) | (!(PINE & (1 << 3)) & (*volume < 100)) ) {
@@ -26,7 +27,8 @@ void set_volume(int a, int *volume) {
 		*volume = *volume + a;
 		if (*volume >= 100) *volume = 100;
 		else if (*volume <= 0) *volume = 0;
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP_VOLUME(*volume)
+		BEEP(1046.5, 0.1) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_D_NUMBER(*volume,3,0)
 		j = 55;
 	}	
@@ -73,6 +75,8 @@ PROGRAM_INIT
 	int *v;
 	v = &volume;
 	BEEP_VOLUME(volume)
+	float beep_frequency = 1046.500; //between 20 and 20000 in Hz
+	float beep_time = 0.15; //between 0.1 and 25 in s
 
 PROGRAM_START
 
@@ -82,7 +86,7 @@ PROGRAM_START
 	// DISPLAY TIME AND WAIT FOR EVENT
 	case display_time:
 
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		#if DEBUG_MODE
 			LCD_TEXT("DEBUG")
 		#else
@@ -100,7 +104,7 @@ PROGRAM_START
 
     // DISPLAY DEVICE1 TIMER AND WAIT FOR EVENT
 	case display_dev1:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("1 0010")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_dev1;
@@ -116,7 +120,7 @@ PROGRAM_START
 
     // DISPLAY DEVICE2 TIMER AND WAIT FOR EVENT
 	case display_dev2:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("2 0005")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_dev2;		
@@ -165,7 +169,7 @@ PROGRAM_START
 		break;
 	// DISPLAY SET TIME AND WAIT FOR EVENT
 	case display_set_time:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("SET T")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_time;
@@ -177,7 +181,7 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER c = display_set_time_input;
 		break;
 	case display_set_time_input:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("  8888")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_time_input;
@@ -191,7 +195,7 @@ PROGRAM_START
 
 	// DISPLAY LEAVE MENU AND WAIT FOR EVENT
 	case display_leave_menu:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("BACK")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_leave_menu;
@@ -206,7 +210,7 @@ PROGRAM_START
 
 	// DISPLAY SET SOUND AND WAIT FOR EVENT
 	case display_set_sound:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("SOUND")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_sound;
@@ -220,7 +224,7 @@ PROGRAM_START
 		break;
 
 	case display_sound_volume:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("VOLUME")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_sound_volume;
@@ -231,7 +235,7 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER c = display_set_volume;
 		break;
 	case display_set_volume:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_D_NUMBER(volume,3,0)
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_volume;
@@ -247,7 +251,7 @@ PROGRAM_START
 
 	// DISPLAY SET TIMER1 AND WAIT FOR EVENT
 	case display_set_timer1:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("SET T1")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_timer1;
@@ -262,7 +266,7 @@ PROGRAM_START
 
 	// DISPLAY SET TIMER2 AND WAIT FOR EVENT
 	case display_set_timer2:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("SET T2")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_timer2;
@@ -277,7 +281,7 @@ PROGRAM_START
 	
 	// DISPLAY SET TIMER1 ON/OFF AND WAIT FOR EVENT
 	case display_set_timer1_on_off:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("ON/OFF")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_timer1_on_off;
@@ -300,13 +304,13 @@ PROGRAM_START
 		#endif
 		break;
 	case display_timer1_on:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("ON")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer1_on;
 		break;
 	case state_timer1_on:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		ON_JOYSTICK_LEFT   c = display_timer1_off;
 		ON_JOYSTICK_RIGHT  c = display_timer1_off;
 		ON_JOYSTICK_UP     { c = display_set_timer1_on_off; } //function set_timer2_on_off_settings
@@ -314,13 +318,13 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER { c = display_set_timer1_on_off; } //function set_timer2_on_off_settings
 		break;
 	case display_timer1_off:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("OFF")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer1_off;
 		break;
 	case state_timer1_off:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		ON_JOYSTICK_LEFT   c = display_timer1_on;
 		ON_JOYSTICK_RIGHT  c = display_timer1_on;
 		ON_JOYSTICK_UP     { c = display_set_timer1_on_off; } //function set_timer2_on_off_settings
@@ -330,7 +334,7 @@ PROGRAM_START
 
 	// DISPLAY SET TIMER2 ON/OFF AND WAIT FOR EVENT
 	case display_set_timer2_on_off:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("ON/OFF")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_timer2_on_off;
@@ -353,13 +357,13 @@ PROGRAM_START
 		#endif
 		break;
 	case display_timer2_on:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("ON")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer2_on;
 		break;
 	case state_timer2_on:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		ON_JOYSTICK_LEFT   c = display_timer2_off;
 		ON_JOYSTICK_RIGHT  c = display_timer2_off;
 		ON_JOYSTICK_UP     { c = display_set_timer2_on_off; } //function set_timer2_on_off_settings
@@ -367,13 +371,13 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER { c = display_set_timer2_on_off; } //function set_timer2_on_off_settings
 		break;
 	case display_timer2_off:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("OFF")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer2_off;
 		break;
 	case state_timer2_off:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		ON_JOYSTICK_LEFT   c = display_timer2_on;
 		ON_JOYSTICK_RIGHT  c = display_timer2_on;
 		ON_JOYSTICK_UP     { c = display_set_timer2_on_off; } //function set_timer2_on_off_settings
@@ -383,7 +387,7 @@ PROGRAM_START
 
 	// DISPLAY SET TIMER1 COUNTDOWN AND WAIT FOR EVENT
 	case display_set_timer1_countdown:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("CNTDW1")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_timer1_countdown;
@@ -396,7 +400,7 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER c = display_timer1_input;
 		break;
 	case display_timer1_input:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("  0010")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer1_input;
@@ -409,7 +413,7 @@ PROGRAM_START
 
 	// DISPLAY SET TIMER2 COUNTDOWN AND WAIT FOR EVENT
 	case display_set_timer2_countdown:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("CNTDW2")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_set_timer2_countdown;
@@ -422,7 +426,7 @@ PROGRAM_START
 		ON_JOYSTICK_CENTER c = display_timer2_input;
 		break;
 	case display_timer2_input:
-		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(beep_frequency, beep_time) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_TEXT("  0005")
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_timer2_input;
