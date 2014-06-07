@@ -35,10 +35,10 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Include Directories
-INCLUDES = -I"D:\Dokumente\Studium\Master\Computer Science\Project\google_code\computer-science-group-c\name_of_project_v1\default" 
+INCLUDES = -I"D:\Dokumente\Studium\Master\Computer Science\Project\google_code\computer-science-group-c\name_of_project_v2\default" 
 
 ## Objects that must be built in order to link
-OBJECTS = AVRBFLY.o dataflash.o Macro_lcd.o uart.o name_of_project_v1.o 
+OBJECTS = AVRBFLY.o dataflash.o Macro_lcd.o uart.o name_of_project_v2.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -59,7 +59,7 @@ Macro_lcd.o: ../Macro_lcd.c
 uart.o: ../uart.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-name_of_project_v1.o: ../name_of_project_v1.c
+name_of_project_v2.o: ../name_of_project_v2.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link

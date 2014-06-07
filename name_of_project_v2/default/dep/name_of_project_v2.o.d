@@ -1,4 +1,4 @@
-name_of_project_v1.o: ../name_of_project_v1.c ../easybutterfly.h \
+name_of_project_v2.o: ../name_of_project_v2.c ../easybutterfly.h \
   ../AVRBFLY.h c:/winavr-20081205/lib/gcc/../../avr/include/avr/io.h \
   c:/winavr-20081205/lib/gcc/../../avr/include/avr/sfr_defs.h \
   c:/winavr-20081205/lib/gcc/../../avr/include/inttypes.h \

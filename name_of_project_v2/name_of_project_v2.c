@@ -1,6 +1,6 @@
 #include "easybutterfly.h" // ACUASeasy library for Butterfly
 
-#define DEBUG_MODE 0
+#define DEBUG_MODE 1
 
 void WAIT_FOR_RELEASE_JOYSTICK_ALL() {
 
@@ -19,18 +19,19 @@ void set_volume(int a, int *volume) {
   BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
   LCD_D_NUMBER(*volume,3,0)	
   int j = 0;
-  while (!(PINE & (1 << 2)) | !(PINE & (1 << 3)) | (*volume >= 100) | (*volume <= 0)) {
-  	for (int i = 0; i<700; i++) ;
+  while ( (!(PINE & (1 << 2)) & (*volume > 0)) | (!(PINE & (1 << 3)) & (*volume < 100)) ) {
+  	for (int i = 0; i<500; i++) ;
 	j = j + 1;
-	if (j > 23) {
+	if (j > 60) {
 		*volume = *volume + a;
 		if (*volume >= 100) *volume = 100;
 		else if (*volume <= 0) *volume = 0;
 		BEEP(1046.500, 0.25) //beep with frequency 1046.5 --> tone c''' for 0.25sec
 		LCD_D_NUMBER(*volume,3,0)
-		j = 0;
+		j = 55;
 	}	
   }
+  j = 0;
   return;
 }
 
