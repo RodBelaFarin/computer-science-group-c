@@ -14,6 +14,8 @@ c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_si_to_sf.o)
                               name_of_project_v2.o (__floatsisf)
 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_sf_to_si.o)
                               name_of_project_v2.o (__fixsfsi)
+c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_usi_to_sf.o)
+                              name_of_project_v2.o (__floatunsisf)
 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
                               c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o) (__udivmodsi4)
 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
@@ -164,7 +166,7 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x32f6
+.text           0x00000000     0x3602
  *(.vectors)
  .vectors       0x00000000       0x5c c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm169.o
                 0x00000000                __vectors
@@ -282,59 +284,62 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
                 0x0000110c                uart_getc
                 0x0000117a                uart_putc
                 0x00001028                __vector_14
- .text          0x000013c2     0x13f6 name_of_project_v2.o
-                0x00001422                set_volume
-                0x00001670                main
-                0x000013c2                WAIT_FOR_RELEASE_JOYSTICK_ALL
- .text          0x000027b8        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
- .text          0x000027b8        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
- .text          0x000027b8        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
- .text          0x000027b8        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
- .text          0x000027b8        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
- .text          0x000027b8       0xbc c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_si_to_sf.o)
-                0x000027b8                __floatsisf
- .text          0x00002874       0xa8 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_sf_to_si.o)
-                0x00002874                __fixsfsi
- .text          0x0000291c        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
- .text          0x0000291c        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
- .text          0x0000291c        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
- .text          0x0000291c       0x9e c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clzsi2.o)
-                0x0000291c                __clzsi2
- .text          0x000029ba      0x1aa c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_pack_sf.o)
-                0x000029ba                __pack_f
- .text          0x00002b64       0xf0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_unpack_sf.o)
-                0x00002b64                __unpack_f
- .text          0x00002c54        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clz.o)
- .text          0x00002c54       0x42 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtostrf.o)
-                0x00002c54                dtostrf
- .text          0x00002c96       0xc2 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
-                0x00002d3c                random
-                0x00002d36                random_r
-                0x00002d46                srandom
- .text          0x00002d58      0x2c4 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
-                0x00002d58                dtoa_prf
- .text          0x0000301c      0x1b0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
-                0x0000301c                __ftoa_engine
-                0x000031cc                . = ALIGN (0x2)
+ .text          0x000013c2     0x1610 name_of_project_v2.o
+                0x00001510                set_volume
+                0x0000175e                main
+                0x000013c2                run_timer
+                0x000014b0                WAIT_FOR_RELEASE_JOYSTICK_ALL
+ .text          0x000029d2        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+ .text          0x000029d2        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+ .text          0x000029d2        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .text          0x000029d2        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .text          0x000029d2        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .text          0x000029d2       0xbc c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_si_to_sf.o)
+                0x000029d2                __floatsisf
+ .text          0x00002a8e       0xa8 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_sf_to_si.o)
+                0x00002a8e                __fixsfsi
+ .text          0x00002b36       0xf2 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_usi_to_sf.o)
+                0x00002b36                __floatunsisf
+ .text          0x00002c28        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00002c28        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+ .text          0x00002c28        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+ .text          0x00002c28       0x9e c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clzsi2.o)
+                0x00002c28                __clzsi2
+ .text          0x00002cc6      0x1aa c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_pack_sf.o)
+                0x00002cc6                __pack_f
+ .text          0x00002e70       0xf0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_unpack_sf.o)
+                0x00002e70                __unpack_f
+ .text          0x00002f60        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clz.o)
+ .text          0x00002f60       0x42 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtostrf.o)
+                0x00002f60                dtostrf
+ .text          0x00002fa2       0xc2 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                0x00003048                random
+                0x00003042                random_r
+                0x00003052                srandom
+ .text          0x00003064      0x2c4 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
+                0x00003064                dtoa_prf
+ .text          0x00003328      0x1b0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
+                0x00003328                __ftoa_engine
+                0x000034d8                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000031cc       0x3e c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
-                0x000031cc                __mulsi3
- .text.libgcc   0x0000320a       0x36 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
-                0x0000320a                __divmodsi4
- .text.libgcc   0x00003240        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00003240        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00003240        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00003240       0x44 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
-                0x00003240                __udivmodsi4
- .text.libgcc   0x00003284       0x38 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
-                0x00003284                __prologue_saves__
- .text.libgcc   0x000032bc       0x36 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
-                0x000032bc                __epilogue_restores__
-                0x000032f2                . = ALIGN (0x2)
+ .text.libgcc   0x000034d8       0x3e c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+                0x000034d8                __mulsi3
+ .text.libgcc   0x00003516       0x36 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+                0x00003516                __divmodsi4
+ .text.libgcc   0x0000354c        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x0000354c        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000354c        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000354c       0x44 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x0000354c                __udivmodsi4
+ .text.libgcc   0x00003590       0x38 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+                0x00003590                __prologue_saves__
+ .text.libgcc   0x000035c8       0x36 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+                0x000035c8                __epilogue_restores__
+                0x000035fe                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000032f2        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
-                0x000032f2                exit
-                0x000032f2                _exit
+ .fini9         0x000035fe        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+                0x000035fe                exit
+                0x000035fe                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -353,11 +358,11 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000032f2        0x4 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .fini0         0x000035fe        0x4 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000032f6                _etext = .
+                0x00003602                _etext = .
 
-.data           0x00800100      0x18a load address 0x000032f6
+.data           0x00800100      0x184 load address 0x00003602
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm169.o
@@ -368,90 +373,92 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
  .data          0x00800118        0x2 Macro_lcd.o
                 0x00800119                CONTRAST
  .data          0x0080011a        0x0 uart.o
- .data          0x0080011a       0x6b name_of_project_v2.o
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_si_to_sf.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_sf_to_si.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clzsi2.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_pack_sf.o)
- .data          0x00800185        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_unpack_sf.o)
- .data          0x00800185      0x100 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clz.o)
-                0x00800185                __clz_tab
- .data          0x00800285        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtostrf.o)
- .data          0x00800285        0x4 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
- .data          0x00800289        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
- .data          0x00800289        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
+ .data          0x0080011a       0x65 name_of_project_v2.o
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_si_to_sf.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_sf_to_si.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_usi_to_sf.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clzsi2.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_pack_sf.o)
+ .data          0x0080017f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_unpack_sf.o)
+ .data          0x0080017f      0x100 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clz.o)
+                0x0080017f                __clz_tab
+ .data          0x0080027f        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtostrf.o)
+ .data          0x0080027f        0x4 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+ .data          0x00800283        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
+ .data          0x00800283        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x0080028a                . = ALIGN (0x2)
- *fill*         0x00800289        0x1 00
-                0x0080028a                _edata = .
-                0x0080028a                PROVIDE (__data_end, .)
+                0x00800284                . = ALIGN (0x2)
+ *fill*         0x00800283        0x1 00
+                0x00800284                _edata = .
+                0x00800284                PROVIDE (__data_end, .)
 
-.bss            0x0080028a      0x113
-                0x0080028a                PROVIDE (__bss_start, .)
+.bss            0x00800284      0x113
+                0x00800284                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x0080028a        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm169.o
- .bss           0x0080028a        0x0 AVRBFLY.o
- .bss           0x0080028a        0x0 dataflash.o
- .bss           0x0080028a        0x5 Macro_lcd.o
-                0x0080028a                gLCD_Update_Required
-                0x0080028d                gColon
-                0x0080028c                gFlashTimer
-                0x0080028b                gLCD_Start_Scroll_Timer
- .bss           0x0080028f       0xa5 uart.o
- .bss           0x00800334        0x0 name_of_project_v2.o
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_si_to_sf.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_sf_to_si.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clzsi2.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_pack_sf.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_unpack_sf.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clz.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtostrf.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
- .bss           0x00800334        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
+ .bss           0x00800284        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm169.o
+ .bss           0x00800284        0x0 AVRBFLY.o
+ .bss           0x00800284        0x0 dataflash.o
+ .bss           0x00800284        0x5 Macro_lcd.o
+                0x00800284                gLCD_Update_Required
+                0x00800287                gColon
+                0x00800286                gFlashTimer
+                0x00800285                gLCD_Start_Scroll_Timer
+ .bss           0x00800289       0xa5 uart.o
+ .bss           0x0080032e        0x0 name_of_project_v2.o
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_si_to_sf.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_sf_to_si.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_usi_to_sf.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clzsi2.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_pack_sf.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_unpack_sf.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clz.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtostrf.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(dtoa_prf.o)
+ .bss           0x0080032e        0x0 c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800334        0x3 dataflash.o
-                0x00800334                PageBits
-                0x00800335                PageSize
- COMMON         0x00800337       0x51 Macro_lcd.o
-                0x00800337                gScrollMode
-                0x00800338                lcd_str
-                0x00800356                v
-                0x0080035a                LCD_Data
-                0x0080036e                gTextBuffer
-                0x00800387                gScroll
- COMMON         0x00800388       0x15 uart.o
-                0x00800388                uart_str
-                0x0080039d                PROVIDE (__bss_end, .)
-                0x000032f6                __data_load_start = LOADADDR (.data)
-                0x00003480                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0080032e        0x3 dataflash.o
+                0x0080032e                PageBits
+                0x0080032f                PageSize
+ COMMON         0x00800331       0x51 Macro_lcd.o
+                0x00800331                gScrollMode
+                0x00800332                lcd_str
+                0x00800350                v
+                0x00800354                LCD_Data
+                0x00800368                gTextBuffer
+                0x00800381                gScroll
+ COMMON         0x00800382       0x15 uart.o
+                0x00800382                uart_str
+                0x00800397                PROVIDE (__bss_end, .)
+                0x00003602                __data_load_start = LOADADDR (.data)
+                0x00003786                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080039d        0x0
-                0x0080039d                PROVIDE (__noinit_start, .)
+.noinit         0x00800397        0x0
+                0x00800397                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080039d                PROVIDE (__noinit_end, .)
-                0x0080039d                _end = .
-                0x0080039d                PROVIDE (__heap_start, .)
+                0x00800397                PROVIDE (__noinit_end, .)
+                0x00800397                _end = .
+                0x00800397                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -516,7 +523,7 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
                 0x00000080       0x20 name_of_project_v2.o
 
 .debug_pubnames
-                0x00000000      0x40b
+                0x00000000      0x419
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x57 AVRBFLY.o
@@ -527,15 +534,15 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
  .debug_pubnames
                 0x00000306       0x9a uart.o
  .debug_pubnames
-                0x000003a0       0x6b name_of_project_v2.o
+                0x000003a0       0x79 name_of_project_v2.o
 
-.debug_info     0x00000000     0x104e
+.debug_info     0x00000000     0x111f
  *(.debug_info)
  .debug_info    0x00000000      0x193 AVRBFLY.o
  .debug_info    0x00000193      0x37d dataflash.o
  .debug_info    0x00000510      0x509 Macro_lcd.o
  .debug_info    0x00000a19      0x362 uart.o
- .debug_info    0x00000d7b      0x2d3 name_of_project_v2.o
+ .debug_info    0x00000d7b      0x3a4 name_of_project_v2.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev   0x00000000      0x561
@@ -546,23 +553,23 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
  .debug_abbrev  0x0000031e      0x133 uart.o
  .debug_abbrev  0x00000451      0x110 name_of_project_v2.o
 
-.debug_line     0x00000000     0x1510
+.debug_line     0x00000000     0x1612
  *(.debug_line)
  .debug_line    0x00000000      0x1c2 AVRBFLY.o
  .debug_line    0x000001c2      0x3f3 dataflash.o
  .debug_line    0x000005b5      0x505 Macro_lcd.o
  .debug_line    0x00000aba      0x2a1 uart.o
- .debug_line    0x00000d5b      0x7b5 name_of_project_v2.o
+ .debug_line    0x00000d5b      0x8b7 name_of_project_v2.o
 
-.debug_frame    0x00000000      0x2b0
+.debug_frame    0x00000000      0x2c0
  *(.debug_frame)
  .debug_frame   0x00000000       0x60 AVRBFLY.o
  .debug_frame   0x00000060       0xc0 dataflash.o
  .debug_frame   0x00000120       0xc0 Macro_lcd.o
  .debug_frame   0x000001e0       0x90 uart.o
- .debug_frame   0x00000270       0x40 name_of_project_v2.o
+ .debug_frame   0x00000270       0x50 name_of_project_v2.o
 
-.debug_str      0x00000000      0x927
+.debug_str      0x00000000      0x98e
  *(.debug_str)
  .debug_str     0x00000000      0x136 AVRBFLY.o
                                 0x16f (size before relaxing)
@@ -572,8 +579,8 @@ LOAD c:/winavr-20081205/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
                                 0x29b (size before relaxing)
  .debug_str     0x000003f9      0x10a uart.o
                                 0x21f (size before relaxing)
- .debug_str     0x00000503      0x424 name_of_project_v2.o
-                                0x53b (size before relaxing)
+ .debug_str     0x00000503      0x48b name_of_project_v2.o
+                                0x5a2 (size before relaxing)
 
 .debug_loc
  *(.debug_loc)

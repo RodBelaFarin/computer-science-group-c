@@ -1,6 +1,40 @@
 #include "easybutterfly.h" // ACUASeasy library for Butterfly
 
-#define DEBUG_MODE 1
+#define DEBUG_MODE 0
+
+void run_timer(int *s, int *m, int *h) {
+
+	unsigned char ElapsedSeconds = 0;
+	unsigned char ElapsedMinutes = 0;
+	unsigned char ElapsedHours = 0;
+ 	while ( TCNT1 >= 49999 )
+	{ 
+		// Check timer value in if statement, true when count matches 1 second 
+		TCNT1 = TCNT1 - 49999; // Reset timer value 
+		ElapsedSeconds++; 
+
+		if (ElapsedSeconds == 60) // Check if one minute has elapsed 
+		{ 
+			ElapsedMinutes++;
+			ElapsedSeconds = 0; // Reset counter variable  
+		}
+		if (ElapsedMinutes == 60) // Check if one hour has elapsed 
+		{ 
+			ElapsedHours++;
+			ElapsedMinutes = 0; // Reset counter variable  
+		}  
+		if (ElapsedHours == 24) // Check if one day has elapsed 
+		{ 
+			ElapsedHours = 0; // Reset counter variable  
+		}
+		LCD_D_NUMBER(ElapsedSeconds,1,0)
+		*s = ElapsedSeconds;
+		*m = ElapsedMinutes;
+		*h = ElapsedHours;  
+	} 
+	return;
+} 
+
 
 void WAIT_FOR_RELEASE_JOYSTICK_ALL() {
 
@@ -17,7 +51,7 @@ void set_volume(int a, int *volume) {
   if (*volume >= 100) *volume = 100;
   else if (*volume <= 0) *volume = 0;
   BEEP_VOLUME(*volume)
-  BEEP(1046.5, 0.1) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+  BEEP(246.942, 0.2) //beep with frequency 246.942 --> tone h for 0.25sec
   LCD_D_NUMBER(*volume,3,0)	
   int j = 0;
   while ( (!(PINE & (1 << 2)) & (*volume > 0)) | (!(PINE & (1 << 3)) & (*volume < 100)) ) {
@@ -28,7 +62,7 @@ void set_volume(int a, int *volume) {
 		if (*volume >= 100) *volume = 100;
 		else if (*volume <= 0) *volume = 0;
 		BEEP_VOLUME(*volume)
-		BEEP(1046.5, 0.1) //beep with frequency 1046.5 --> tone c''' for 0.25sec
+		BEEP(246.942, 0.2) //beep with frequency 246.942 --> tone h for 0.25sec
 		LCD_D_NUMBER(*volume,3,0)
 		j = 55;
 	}	
@@ -40,6 +74,8 @@ void set_volume(int a, int *volume) {
 PROGRAM_INIT
 	ACTIVATE_LCD // initialize the LCD. The output begins at the first position of the display.
 	CLEAR_LCD // Clears the LCD screen.
+	TCCR1B = ((1 << CS10)); // Set up timer at Fcpu/256 
+		
 	enum states { display_time, state_time, 		//enumeration of all states
 				  display_dev1, state_dev1,
 				  display_dev2,	state_dev2,
@@ -74,12 +110,24 @@ PROGRAM_INIT
 	int volume = 50;
 	int *v;
 	v = &volume;
+	int seconds = 0;
+	int *s;
+	s = &seconds;
+	int minutes = 0;
+	int *m;
+	m = &minutes;
+	int hours = 0;
+	int *h;
+	h = &hours;
 	BEEP_VOLUME(volume)
-	float beep_frequency = 1046.500; //between 20 and 20000 in Hz
-	float beep_time = 0.15; //between 0.1 and 25 in s
+	float beep_frequency = 246.942; //between 20 and 20000 in Hz
+	float beep_time = 0.2; //between 0.1 and 25 in s
+	int actual_minute = 0;
+	int actual_second = 0;
 
 PROGRAM_START
 
+	run_timer(s, m, h);
 	switch (c)
 	{
 
@@ -90,7 +138,9 @@ PROGRAM_START
 		#if DEBUG_MODE
 			LCD_TEXT("DEBUG")
 		#else
-			LCD_TEXT("  0000")
+			run_timer(s, m, h);
+			actual_minute = minutes;
+			LCD_D_NUMBER(seconds,2,0)
 		#endif
 		WAIT_FOR_RELEASE_JOYSTICK_ALL();
 		c = state_time;
@@ -99,7 +149,9 @@ PROGRAM_START
 		ON_JOYSTICK_LEFT   c = display_dev1;
 		ON_JOYSTICK_RIGHT  c = display_dev2;
 		ON_JOYSTICK_CENTER c = state_time_center_pressed;
-		//if (now - actual_time > 1min) c = display_time;
+		run_timer(s, m, h);
+		//if ((minutes - actual_minute >= 1) | ((actual_minute == 59) & (minutes == 0))) c = display_time;
+		if ((seconds - actual_second >= 1) | ((actual_second == 59) & (seconds == 0))) c = display_time;
 		break;
 
     // DISPLAY DEVICE1 TIMER AND WAIT FOR EVENT
