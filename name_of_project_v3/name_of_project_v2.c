@@ -1,7 +1,7 @@
 #include "easybutterfly.h" // ACUASeasy library for Butterfly
 #include "RTC.h"
 
-#define DEBUG_MODE 0
+#define DEBUG_MODE 1
 
 /*
 void run_timer(int *s, int *m, int *h) {

@@ -38,7 +38,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 INCLUDES = -I"D:\Dokumente\Studium\Master\Computer Science\Project\google_code\computer-science-group-c\name_of_project_v3\default" 
 
 ## Objects that must be built in order to link
-OBJECTS = AVRBFLY.o dataflash.o Macro_lcd.o uart.o name_of_project_v2.o RTC.o BCD.o 
+OBJECTS = AVRBFLY.o dataflash.o Macro_lcd.o uart.o name_of_project_v2.o BCD.o RTC.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -62,10 +62,10 @@ uart.o: ../uart.c
 name_of_project_v2.o: ../name_of_project_v2.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-RTC.o: ../RTC.c
+BCD.o: ../BCD.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-BCD.o: ../BCD.c
+RTC.o: ../RTC.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
